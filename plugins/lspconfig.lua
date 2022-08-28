@@ -30,6 +30,7 @@ local servers = {
 	"emmet_ls",
 	"tsserver",
 	"pyright",
+  "prismals",
 	"rust_analyzer",
 	"tailwindcss",
 }
