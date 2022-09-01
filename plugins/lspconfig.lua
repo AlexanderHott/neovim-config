@@ -28,6 +28,7 @@ local servers = {
 	"cssls",
 	"bashls",
 	"emmet_ls",
+  "jdtls",
 	"tsserver",
 	"pyright",
   "prismals",

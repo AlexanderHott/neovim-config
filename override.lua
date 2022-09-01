@@ -12,6 +12,7 @@ M.treesitter = {
 		"heex",
 		"html",
 		"http",
+    "java",
 		"javascript",
 		"json",
 		"latex",
