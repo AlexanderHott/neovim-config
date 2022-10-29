@@ -57,7 +57,7 @@ local sources = {
    b.diagnostics.markdownlint,
 
    -- Misc
-   b.diagnostics.codespell,
+   b.diagnostics.codespell.with {extra_args = {"-I", "~/.config/codespellignore"}},
 }
 
 null_ls.setup {
