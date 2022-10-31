@@ -85,6 +85,12 @@ M.rest = {
 	},
 }
 
+M.comment = {
+  n = {
+    ["gc"] = { "<Plug>Commentary", "Comment the current line"}
+  }
+}
+
 M.chtsh = {
 	n = {
 		["<leader>cs"] = { ":Cheat<cr>", "Check cht.sh" },

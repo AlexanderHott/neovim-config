@@ -10,24 +10,24 @@ local sources = {
 
    -- webdev stuff
    b.formatting.prettier.with {
-      -- filetypes = {
-      --    "javascript",
-      --    "javascriptreact",
-      --    "typescript",
-      --    "typescriptreact",
-      --    "vue",
-      --    "css",
-      --    "scss",
-      --    "less",
-      --    "html",
-      --    "json",
-      --    "jsonc",
-      --    "yaml",
-      --    "markdown",
-      --    "graphql",
-      --    "handlebars",
-      -- },
-      -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
+      filetypes = {
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+      "vue",
+      "css",
+      "scss",
+      "less",
+      "html",
+      "json",
+      "jsonc",
+      "yaml",
+      "markdown",
+      "graphql",
+      "handlebars",
+      },
+      extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
    },
 
    -- Lua

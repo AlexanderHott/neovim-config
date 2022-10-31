@@ -1,5 +1,22 @@
+local override = require("custom.plugins.override")
+
+local exists, treesitter_config = pcall(require,'nvim-treesitter.configs')
+if exists then
+  vim.notify("treesitter config exists")
+treesitter_config.setup {
+  context_commentstring = {
+    enable = true
+  }
+}
+else
+  vim.notify("treesitter config not exists")
+end
 return {
+
+  ------
 	-- New
+  ------
+
 	["p00f/nvim-ts-rainbow"] = { -- rainbow brackets
 		after = "nvim-treesitter",
 	},
@@ -55,6 +72,7 @@ return {
 				keys = "<Esc>", -- keys used for escaping, if it is a function will use the result every time
 			})
 		end,
+    override_options = override.better_escape,
 	},
 	["simrat39/symbols-outline.nvim"] = {},
 	["github/copilot.vim"] = {},
@@ -70,6 +88,7 @@ return {
 		end,
 	},
 	["windwp/nvim-ts-autotag"] = {
+    ft={"html","md","javascriptreact","typescriptreact"},
 		after = "nvim-treesitter",
 		config = function()
 			local present, autotag = pcall(require, "nvim-ts-autotag")
@@ -119,13 +138,18 @@ return {
   end
   },
   ["RishabhRD/nvim-cheat.sh"] = {},
+  ["tpope/vim-commentary"] = {},
 
+  --------------------
 	-- Already installed
+  --------------------
+
 	["goolord/alpha-nvim"] = { -- start screen
 		disable = false,
 		config = function()
 			require("custom.plugins.alpha")
 		end,
+    override_options = override.alpha,
 	},
 	["folke/which-key.nvim"] = { disable = false },
 
@@ -135,4 +159,17 @@ return {
 			require("custom.plugins.lspconfig")
 		end,
 	},
+
+  ["kyazdani42/nvim-tree.lua"] = { override_options = override.nvimtree },
+  ["nvim-treesitter/nvim-treesitter"] = { override_options = override.treesitter },
+  ["akinsho/bufferline.nvim"] = { override_options = override.bufferline },
+  ["NvChad/nvterm"] = { override_options = override.nvterm },
+  ["lukas-reineke/indent-blankline.nvim"] = { override_options = override.blankline },
+  ["NvChad/nvim-colorizer.lua"] = { override_options = override.colorizer },
+  ["ray-x/lsp_signature.nvim"] = { override_options = override.signature },
+  ["lewis6991/gitsigns.nvim"] = { override_options = override.gitsigns },
+  ["feline-nvim/feline.nvim"] = { override_options = override.statusline },
+  ["nvim-telescope/telescope.nvim"] = { override_options = override.telescope },
+  ["williamboman/mason.nvim"] = { override_options = override.mason },
 }
+

@@ -211,6 +211,8 @@ M.mason = {
 		"black",
 		-- webdev
 		"typescript-language-server",
+		"emmet-ls",
+		"tailwindcss-language-server",
 		"prettier",
 		"emmet-ls",
 		-- Other
