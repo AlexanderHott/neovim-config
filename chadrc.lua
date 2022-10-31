@@ -1,22 +1,5 @@
 local M = {}
 
--- TODO: Add plugins
--- - [x] https://github.com/tpope/vim-fugitive
--- - [ ] https://github.com/rcarriga/nvim-dap-ui
--- - [ ] lsp lines
--- - [x] leap.nvim / hop.nvim
--- - [ ] https://github.com/folke/trouble.nvim
---
--- TODO: Add keymaps
--- - [ ] nvim dap
---
--- TODO: Add terminal repls
---
--- TODO: Add autocmds
---
--- TODO: Fix indents
-    -- may be caused by indent-blankline + ts indents at the same time
-
 -- local override = require("custom.plugins.override")
 
 -- M.plugins = {
@@ -40,10 +23,6 @@ M.plugins = require("custom.plugins")
 
 M.mappings = require("custom.mappings")
 
-M.ui = {}
-
--- Unsure where to add this
-vim.opt.relativenumber = true
---
+M.ui = { theme = "onedark" }
 
 return M
