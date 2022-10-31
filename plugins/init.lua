@@ -1,21 +1,21 @@
 local override = require("custom.plugins.override")
 
-local exists, treesitter_config = pcall(require,'nvim-treesitter.configs')
+local exists, treesitter_config = pcall(require, "nvim-treesitter.configs")
 if exists then
-  vim.notify("treesitter config exists")
-treesitter_config.setup {
-  context_commentstring = {
-    enable = true
-  }
-}
+	vim.notify("treesitter config exists")
+	treesitter_config.setup({
+		context_commentstring = {
+			enable = true,
+		},
+	})
 else
-  vim.notify("treesitter config not exists")
+	vim.notify("treesitter config not exists")
 end
 return {
 
-  ------
+	------
 	-- New
-  ------
+	------
 
 	["p00f/nvim-ts-rainbow"] = { -- rainbow brackets
 		after = "nvim-treesitter",
@@ -30,7 +30,7 @@ return {
 			require("custom.plugins.null-ls")
 		end,
 	},
-  ["RishabhRD/popfix"] = {},
+	["RishabhRD/popfix"] = {},
 	-- Doesn't work with LspInstaller
 	-- ["andreadev-it/shade.nvim"] = { -- dim unactive windows
 	--    -- module = "shade",
@@ -72,7 +72,7 @@ return {
 				keys = "<Esc>", -- keys used for escaping, if it is a function will use the result every time
 			})
 		end,
-    override_options = override.better_escape,
+		override_options = override.better_escape,
 	},
 	["simrat39/symbols-outline.nvim"] = {},
 	["github/copilot.vim"] = {},
@@ -88,7 +88,7 @@ return {
 		end,
 	},
 	["windwp/nvim-ts-autotag"] = {
-    ft={"html","md","javascriptreact","typescriptreact"},
+		ft = { "html", "md", "javascriptreact", "typescriptreact" },
 		after = "nvim-treesitter",
 		config = function()
 			local present, autotag = pcall(require, "nvim-ts-autotag")
@@ -98,58 +98,66 @@ return {
 			end
 		end,
 	},
-  ["rest-nvim/rest.nvim"] = {
-    requires = { "nvim-lua/plenary.nvim" },
-    config = function()
-    require("rest-nvim").setup({
-      -- Open request results in a horizontal split
-      result_split_horizontal = false,
-      -- Keep the http file buffer above|left when split horizontal|vertical
-      result_split_in_place = false,
-      -- Skip SSL verification, useful for unknown certificates
-      skip_ssl_verification = false,
-			-- Encode URL before making request
-			encode_url = true,
-      -- Highlight request on run
-      highlight = {
-        enabled = true,
-        timeout = 150,
-      },
-      result = {
-        -- toggle showing URL, HTTP info, headers at top the of result window
-        show_url = true,
-        show_http_info = true,
-        show_headers = true,
-        -- executables or functions for formatting response body [optional]
-        -- set them to nil if you want to disable them
-        formatters = {
-          json = "jq",
-          html = function(body)
-            return vim.fn.system({"tidy", "-i", "-q", "-"}, body)
-          end
-        },
-      },
-      -- Jump to request line on run
-      jump_to_request = false,
-      env_file = '.env',
-      custom_dynamic_variables = {},
-      yank_dry_run = true,
-    })
-  end
-  },
-  ["RishabhRD/nvim-cheat.sh"] = {},
-  ["tpope/vim-commentary"] = {},
+	["rest-nvim/rest.nvim"] = {
+		requires = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("rest-nvim").setup({
+				-- Open request results in a horizontal split
+				result_split_horizontal = false,
+				-- Keep the http file buffer above|left when split horizontal|vertical
+				result_split_in_place = false,
+				-- Skip SSL verification, useful for unknown certificates
+				skip_ssl_verification = false,
+				-- Encode URL before making request
+				encode_url = true,
+				-- Highlight request on run
+				highlight = {
+					enabled = true,
+					timeout = 150,
+				},
+				result = {
+					-- toggle showing URL, HTTP info, headers at top the of result window
+					show_url = true,
+					show_http_info = true,
+					show_headers = true,
+					-- executables or functions for formatting response body [optional]
+					-- set them to nil if you want to disable them
+					formatters = {
+						json = "jq",
+						html = function(body)
+							return vim.fn.system({ "tidy", "-i", "-q", "-" }, body)
+						end,
+					},
+				},
+				-- Jump to request line on run
+				jump_to_request = false,
+				env_file = ".env",
+				custom_dynamic_variables = {},
+				yank_dry_run = true,
+			})
+		end,
+	},
+	["RishabhRD/nvim-cheat.sh"] = {},
+	["tpope/vim-commentary"] = {},
 
-  --------------------
+--	["williamboman/mason-lspconfig.nvim"] = {
+--		after = "nvim-lspconfig",
+--		config = function()
+--			require("custom.plugins.mason-lspconfig")
+--		end,
+--	},
+	["mbbill/undotree"] = {},
+
+	--------------------
 	-- Already installed
-  --------------------
+	--------------------
 
 	["goolord/alpha-nvim"] = { -- start screen
 		disable = false,
 		config = function()
 			require("custom.plugins.alpha")
 		end,
-    override_options = override.alpha,
+		override_options = override.alpha,
 	},
 	["folke/which-key.nvim"] = { disable = false },
 
@@ -160,16 +168,15 @@ return {
 		end,
 	},
 
-  ["kyazdani42/nvim-tree.lua"] = { override_options = override.nvimtree },
-  ["nvim-treesitter/nvim-treesitter"] = { override_options = override.treesitter },
-  ["akinsho/bufferline.nvim"] = { override_options = override.bufferline },
-  ["NvChad/nvterm"] = { override_options = override.nvterm },
-  ["lukas-reineke/indent-blankline.nvim"] = { override_options = override.blankline },
-  ["NvChad/nvim-colorizer.lua"] = { override_options = override.colorizer },
-  ["ray-x/lsp_signature.nvim"] = { override_options = override.signature },
-  ["lewis6991/gitsigns.nvim"] = { override_options = override.gitsigns },
-  ["feline-nvim/feline.nvim"] = { override_options = override.statusline },
-  ["nvim-telescope/telescope.nvim"] = { override_options = override.telescope },
-  ["williamboman/mason.nvim"] = { override_options = override.mason },
+	["kyazdani42/nvim-tree.lua"] = { override_options = override.nvimtree },
+	["nvim-treesitter/nvim-treesitter"] = { override_options = override.treesitter },
+	["akinsho/bufferline.nvim"] = { override_options = override.bufferline },
+	["NvChad/nvterm"] = { override_options = override.nvterm },
+	["lukas-reineke/indent-blankline.nvim"] = { override_options = override.blankline },
+	["NvChad/nvim-colorizer.lua"] = { override_options = override.colorizer },
+	["ray-x/lsp_signature.nvim"] = { override_options = override.signature },
+	["lewis6991/gitsigns.nvim"] = { override_options = override.gitsigns },
+	["feline-nvim/feline.nvim"] = { override_options = override.statusline },
+	["nvim-telescope/telescope.nvim"] = { override_options = override.telescope },
+	["williamboman/mason.nvim"] = { override_options = override.mason },
 }
-

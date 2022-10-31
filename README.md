@@ -8,18 +8,29 @@ This is meant for use with [NvChad](https://github.com/nvchad/nvchad)
 
 ## Quickstart
 
+Install neovim v0.8
+
 ```bash
-git clone https://github.com/AlexanderHOtt/neovim-config/ ~/.config/nvchad_custom
+wget https://github.com/neovim/neovim/releases/download/latest/nvim.appimage -O nvim
+chmod +x nvim
+mv nvim /usr/local/bin/
+```
+
+[NvChad Setup](https://nvchad.github.io/quickstart/install)
+
+```bash
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+```
+
+Custom config setup
+
+```bash
+git clone https://github.com/AlexanderHOtt/neovim-config/ ~/.config/nvchad_custom --depth 1
 ln -s ~/.config/nvchad_custom/ ~/.config/nvim/lua/custom
 ```
 
 **Note:** Make sure to run `:PackerSync` after nvim launches.
 
-## [NvChad Setup](https://nvchad.github.io/quickstart/install)
-
-```bash
-git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
-```
 
 ## TODO
 
