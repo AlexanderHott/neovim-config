@@ -13,6 +13,7 @@ return {
 			require("custom.plugins.null-ls")
 		end,
 	},
+  ["RishabhRD/popfix"] = {},
 	-- Doesn't work with LspInstaller
 	-- ["andreadev-it/shade.nvim"] = { -- dim unactive windows
 	--    -- module = "shade",
@@ -117,6 +118,7 @@ return {
     })
   end
   },
+  ["RishabhRD/nvim-cheat.sh"] = {},
 
 	-- Already installed
 	["goolord/alpha-nvim"] = { -- start screen

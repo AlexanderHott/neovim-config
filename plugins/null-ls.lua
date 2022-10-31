@@ -10,24 +10,24 @@ local sources = {
 
    -- webdev stuff
    b.formatting.prettier.with {
-      filetypes = {
-         "javascript",
-         "javascriptreact",
-         "typescript",
-         "typescriptreact",
-         "vue",
-         "css",
-         "scss",
-         "less",
-         "html",
-         "json",
-         "jsonc",
-         "yaml",
-         "markdown",
-         "graphql",
-         "handlebars",
-      },
-      extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
+      -- filetypes = {
+      --    "javascript",
+      --    "javascriptreact",
+      --    "typescript",
+      --    "typescriptreact",
+      --    "vue",
+      --    "css",
+      --    "scss",
+      --    "less",
+      --    "html",
+      --    "json",
+      --    "jsonc",
+      --    "yaml",
+      --    "markdown",
+      --    "graphql",
+      --    "handlebars",
+      -- },
+      -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
    },
 
    -- Lua
@@ -57,7 +57,7 @@ local sources = {
    b.diagnostics.markdownlint,
 
    -- Misc
-   b.diagnostics.codespell,
+   b.diagnostics.codespell.with{ extra_args = {"--ignore-words", "~/.config/codespell-ignore"}}
 }
 
 null_ls.setup {

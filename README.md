@@ -18,3 +18,8 @@ ln -s ~/.config/nvchad_custom/ ~/.config/nvim/lua/custom
 ```bash
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
 ```
+
+## TODO
+
+- [ ] <https://github.com/nvim-treesitter/nvim-treesitter-textobjects>
+- [ ] <https://github.com/nvim-treesitter/nvim-treesitter-context#screenshot>
