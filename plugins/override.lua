@@ -218,9 +218,9 @@ M.mason = {
 		"emmet-ls",
 		-- Other
 		"codespell",
-		"lua-language-serve",
+		"lua-language-server",
 		"actionlint",
-		"rust-analyze",
+		"rust-analyzer",
 	},
 }
 

@@ -1,36 +1,41 @@
 local override = require("custom.plugins.override")
 
-local exists, treesitter_config = pcall(require, "nvim-treesitter.configs")
-if exists then
-	vim.notify("treesitter config exists")
-	treesitter_config.setup({
-		context_commentstring = {
-			enable = true,
-		},
-	})
-else
-	vim.notify("treesitter config not exists")
-end
+-- local exists, treesitter_config = pcall(require, "nvim-treesitter.configs")
+-- if exists then
+-- 	vim.notify("treesitter config exists")
+-- 	treesitter_config.setup({
+-- 		context_commentstring = {
+-- 			enable = true,
+-- 		},
+-- 	})
+-- else
+-- 	vim.notify("treesitter config not exists")
+-- end
+
 return {
 
-	------
-	-- New
-	------
+	------------------------------------------------------------------------------
+	-------------------------------------- New -----------------------------------
+	------------------------------------------------------------------------------
 
-	["p00f/nvim-ts-rainbow"] = { -- rainbow brackets
+	-- rainbow brackets
+	["p00f/nvim-ts-rainbow"] = {
 		after = "nvim-treesitter",
 	},
-	["JoosepAlviste/nvim-ts-context-commentstring"] = { -- correct comments inside of jsx code
+	-- correct comments inside of jsx code
+	["JoosepAlviste/nvim-ts-context-commentstring"] = {
 		after = "nvim-treesitter",
 	},
-
-	["jose-elias-alvarez/null-ls.nvim"] = { -- extensive formatting and diagnostics
+	-- extensive formatting and diagnostics
+	["jose-elias-alvarez/null-ls.nvim"] = {
 		after = "nvim-lspconfig",
 		config = function()
 			require("custom.plugins.null-ls")
 		end,
 	},
+	-- UI lib for plugin
 	["RishabhRD/popfix"] = {},
+
 	-- Doesn't work with LspInstaller
 	-- ["andreadev-it/shade.nvim"] = { -- dim unactive windows
 	--    -- module = "shade",
@@ -48,21 +53,27 @@ return {
 	--       require "vim-matchup"
 	--    end,
 	-- },
+
+	-- React snippets
 	["mlaursen/vim-react-snippets"] = {
 		after = "LuaSnip",
 	},
+	-- Automatically find and keep track of different projects
 	["ahmedkhalf/project.nvim"] = {
 		-- after = "telescope.nvim",
 		config = function()
 			require("custom.plugins.project")
 		end,
 	},
+	-- Debugger adapter protocol
 	["mfussenegger/nvim-dap"] = {
 		config = function()
 			require("custom.plugins.dap")
 		end,
 	},
+	-- Git integration with :G
 	["tpope/vim-fugitive"] = {},
+	-- use jk kj for escape
 	["max397574/better-escape.nvim"] = {
 		config = function()
 			require("better_escape").setup({
@@ -74,9 +85,13 @@ return {
 		end,
 		override_options = override.better_escape,
 	},
+	-- outline all the tokens of a file (AST)
 	["simrat39/symbols-outline.nvim"] = {},
+	-- AI autocomplete
 	["github/copilot.vim"] = {},
+	-- Copilot in completion window
 	["zbirenbaum/copilot-cmp"] = {},
+	-- surround blocks with []{}()""''<> and html tags
 	["tpope/vim-surround"] = {
 		keys = { "c", "d", "y" },
 	},
@@ -87,6 +102,7 @@ return {
 			require("hop").setup({ keys = "asdfghjkl;qwertyuiop" })
 		end,
 	},
+	-- automatically close html/jsx tags
 	["windwp/nvim-ts-autotag"] = {
 		ft = { "html", "md", "javascriptreact", "typescriptreact" },
 		after = "nvim-treesitter",
@@ -98,6 +114,7 @@ return {
 			end
 		end,
 	},
+	-- rest client
 	["rest-nvim/rest.nvim"] = {
 		requires = { "nvim-lua/plenary.nvim" },
 		config = function()
@@ -137,30 +154,36 @@ return {
 			})
 		end,
 	},
+	-- cht.sh integration
 	["RishabhRD/nvim-cheat.sh"] = {},
+	-- commenting
 	["tpope/vim-commentary"] = {},
 
---	["williamboman/mason-lspconfig.nvim"] = {
---		after = "nvim-lspconfig",
---		config = function()
---			require("custom.plugins.mason-lspconfig")
---		end,
---	},
+	--	["williamboman/mason-lspconfig.nvim"] = {
+	--		after = "nvim-lspconfig",
+	--		config = function()
+	--			require("custom.plugins.mason-lspconfig")
+	--		end,
+	--	},
+	-- View undo history
 	["mbbill/undotree"] = {},
 
-	--------------------
-	-- Already installed
-	--------------------
+	------------------------------------------------------------------------------
+	-------------------------------------- Already installed ---------------------
+	------------------------------------------------------------------------------
 
-	["goolord/alpha-nvim"] = { -- start screen
+	-- start screen
+	["goolord/alpha-nvim"] = {
 		disable = false,
 		config = function()
 			require("custom.plugins.alpha")
 		end,
 		override_options = override.alpha,
 	},
+  -- Show keymaps
 	["folke/which-key.nvim"] = { disable = false },
 
+  -- LSP
 	["neovim/nvim-lspconfig"] = {
 		config = function()
 			require("plugins.configs.lspconfig")
